@@ -34,8 +34,7 @@ void setup(){
   display.clear(); //apaga todo o conteúdo da tela do display
 
   SPI.begin(SCK,MISO,MOSI,CS); //inicia a comunicação serial com o Lora
-  LoRa.setPins(CS,RST,DI00); //configura os pinos que serão utlizados pela biblioteca (deve ser chamado antes do LoRa.begin)
-  display.drawString(0, 0, "OIII!");  
+  LoRa.setPins(CS,RST,DI00); //configura os pinos que serão utlizados pela biblioteca (deve ser chamado antes do LoRa.begin) 
   //inicializa o Lora com a frequencia específica.
   if (!LoRa.begin(BAND)) {
     display.drawString(0, 0, "Starting LoRa failed!");
@@ -45,7 +44,7 @@ void setup(){
 
   //indica no display que inicilizou corretamente.
   display.drawString(0, 0, "LoRa Initial success!");
-  display.drawString(0, 10, "Wait for incomm data...");
+  display.drawString(0, 15, "Wait for incomm data...");
   display.display();
   delay(1000);
 
@@ -79,9 +78,9 @@ void cbk(int packetSize) {
 void loraData(){
   display.clear();
   display.setTextAlignment(TEXT_ALIGN_LEFT);
-  display.setFont(ArialMT_Plain_16);
-  display.drawString(0 , 18 , "Rx "+ packSize + " bytes");
-  display.drawStringMaxWidth(0 , 39 , 128, packet);
+  display.setFont(ArialMT_Plain_10);
+  //display.drawString(0 , 18 , packSize);
+  display.drawString(0 , 15, packet);
   display.drawString(0, 0, rssi); 
   display.display();
 }
