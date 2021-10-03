@@ -78,10 +78,12 @@ display.display(); //Mostrando o conteudo no display
 //beginPacket : abre um pacote para adicionarmos os dados para envio
 LoRa.beginPacket();
 //print: adiciona os dados no pacote
-LoRa.print("Umidade: ");
-LoRa.println(h);
-LoRa.print("Temperatura: ");
-LoRa.println(t);
+LoRa.print("Umi: ");
+LoRa.print(h);
+LoRa.println("%");
+LoRa.print("Temp: ");
+LoRa.print(t);
+LoRa.println("ºC");
 //endPacket : fecha o pacote e envia
 LoRa.endPacket(); //retorno= 1:sucesso | 0: falha
 delay(60000); //Delay entre leituras de 1 minuto
